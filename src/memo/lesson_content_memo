@@ -5,3 +5,40 @@ npm start
 react-bootstrap.github.io 에서 부트스트랩 설치
 npm install react-bootstrap bootstrap(사이트에서 참고)
 
+================
+
+
+[페이지나누는법]
+리액트는 index.html 하나
+1. 컴포넌트 만들어서 상세페이지내용 채움
+2. /detail 접속시 그 컴포넌트 보여줌
+->react-router-dom 사용
+
+[react-router-dom 설치]
+1. 터미널창에 npm install react-router-dom@6
+2. index.js에 <App>컴포넌트를 <BrowserRouter>컴포넌트로 감싼다, import { BrowserRouter } from 'react-router-dom';추가
+3. App.js에 import { Routes, Route, Link, useNavigate, Outlet(등 필요한 컴포넌트 추가) } from 'react-router-dom'
+해주고 사용하면됨
+
+[페이지이동을 도와주는] useNavigate('경로')
+
+[404페이지] <Route path="*">
+
+[Nested Routes]
+<Route path="/about" element={<About/>}/> //회사정보
+<Route path="/about/member" element={<About/>} /> //회사조직 (/about/member)
+<Route path="/about/location" element={<About/>} /> //회사위치 (/about/location)
+해당문법적용
+<Route path="/about" element={<About/>}>
+    <Route path="member" element={<div>멤버임</div>}> (/about/member) 
+    <Route path="location" element={<About/>}> (/about/location)
+<Route/>
+1.좀더 간단해질수있음
+2.element가 더생김(둘다보임), 하위 <Route>의 element내용은 어디보여줄지? -> <Outlet>사용
+
+-여러 유사한 페이지 필요할때
+-뒤로가기 가능
+-페이지이동 용이
+
+[URL파라미터]
+<Route path="/경로/:id/:id2/:id3/:...무한가능">
