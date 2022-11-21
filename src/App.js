@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Navbar, NavDropdown, Container, Nav, Row, Col} from 'react-bootstrap';
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
@@ -12,6 +12,17 @@ function App() {
 
   let [shose] = useState(data);
   let navigate = useNavigate();
+
+  let [flagDtl, setFlagDtl] = useState(false);
+  let [fade, setFade] = useState('');
+
+  useEffect(()=>{
+    console.log(flagDtl);
+    setTimeout(()=>{setFade('end')}, 100);
+    return()=>{
+      setFade('');
+    }
+  },[flagDtl])
   
   return (
     <div className="App">
@@ -51,7 +62,11 @@ function App() {
                     let path = "detail/"+ pData.id;
                     console.log(JSON.stringify(path));
                     return(
-                      <Link to={path}>
+                      <Link onClick={()=>{
+                        
+                        setFlagDtl(!flagDtl);
+                        
+                      }} to={path}>
                         <Product sendData={pData} i={idx+1}></Product>
                       </Link>
                     )
@@ -60,7 +75,7 @@ function App() {
               </Row>
             </Container>
           </div>}/>
-        <Route path="/detail/:id" element={<div><Detail sendData={shose}/></div>}/>
+        <Route path="/detail/:id" element={<div className={`start ` + fade}><Detail sendData={shose}/></div>}/>
         <Route path="/event" element={<div><h4>오늘의 이벤트</h4><Outlet></Outlet></div>}>
           <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>}/>
           <Route path="two" element={<div>생일기념 쿠폰받기</div>}/>

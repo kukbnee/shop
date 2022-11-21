@@ -42,3 +42,10 @@ npm install react-bootstrap bootstrap(사이트에서 참고)
 
 [URL파라미터]
 <Route path="/경로/:id/:id2/:id3/:...무한가능">
+
+[전환애니매이션]
+전환애니메이션은 부착하면 애니메이션 나오는 className하나 만들고 원할때 부착하면됨
+1.애니메이션동작전 className만든다
+2.애니메이션동작후 className만든다
+3.className에 transition속성추가
+4.원할때2번 className부착
