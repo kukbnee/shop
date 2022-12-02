@@ -5,8 +5,7 @@ import { Button, Navbar, NavDropdown, Container, Nav, Row, Col} from 'react-boot
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './pages/Detail.js'
-
-
+import Cart from './pages/Cart.js'
 
 function App() {
 
@@ -31,6 +30,9 @@ function App() {
         <Container>
           <Navbar.Brand onClick={()=>{ navigate('/')}}>빈슈즈샵</Navbar.Brand>
           <Nav className="me-auto">
+          <Nav.Item>
+              <Nav.Link onClick={()=>{navigate('/cart')}}>Cart</Nav.Link>
+            </Nav.Item>
             <Nav.Item>
               <Nav.Link href="#lanking">랭킹</Nav.Link>
             </Nav.Item>
@@ -80,6 +82,7 @@ function App() {
           <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>}/>
           <Route path="two" element={<div>생일기념 쿠폰받기</div>}/>
         </Route>
+        <Route path="/cart" element={<Cart/>}></Route>
         <Route path="*" element={<div>없는페이지임</div>}/>
       </Routes>
       

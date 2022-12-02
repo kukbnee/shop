@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from 'react-bootstrap';
+import { useDispatch, useSelector } from "react-redux";
+import { addCart } from "./../store/cartSlice.js";
 
 function Detail(props) {
   let {id} = useParams();
@@ -13,6 +15,10 @@ function Detail(props) {
       setFade('');
     }
   }, [tabs]);
+
+  let stateCartData = useSelector((state)=> state.cartData);
+  console.log(stateCartData);
+  let dispatch = useDispatch();
     return(
       <div className="container">
         <div className="row">
@@ -23,7 +29,11 @@ function Detail(props) {
             <h4 className="pt-5">{props.sendData[id].title}</h4>
             <p>{props.sendData[id].content}</p>
             <p>{props.sendData[id].price}</p>
-            <button className="btn btn-danger">주문하기</button> 
+            <button className="btn btn-danger" onClick={()=>{
+              
+              dispatch(addCart({id : props.sendData[id].id, name : props.sendData[id].title, count : 1}));
+              
+            }}>주문하기</button> 
           </div>
         </div>
 

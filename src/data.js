@@ -6,7 +6,8 @@ let data = [
       title : "White and Black",
       content : "Born in France",
       price : 120000,
-      imgPath : "/gImg/dr_martens_001.jpg"
+      imgPath : "/gImg/dr_martens_001.jpg",
+      count : 0
     },
   
     {
@@ -14,7 +15,8 @@ let data = [
       title : "Red Knit",
       content : "Born in Seoul",
       price : 110000,
-      imgPath : "/gImg/dr_martens_002.jpg"
+      imgPath : "/gImg/dr_martens_002.jpg",
+      count : 0
     },
   
     {
@@ -22,7 +24,8 @@ let data = [
       title : "Grey Yordan",
       content : "Born in the States",
       price : 130000,
-      imgPath : "/gImg/dr_martens_003.jpg"
+      imgPath : "/gImg/dr_martens_003.jpg",
+      count : 0
     }
   ];
 
